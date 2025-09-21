@@ -1029,11 +1029,33 @@
             updateCategoryTitle(currentCategory);
 
             // Filtrar productos por categoría
-            let filteredProducts = allProducts;
-            if (currentCategory !== 'todos') {
+            let filteredProducts;
+            const specialSlugs = new Set(['ofertas-de-temporada','mas-vendidos','lo-que-necesitas']);
+            const allowed = ['accesorios-deportivos','alimentos','ropa','electrodomesticos','tecnologia','herramientas','joyeria','piezas-para-autos','productos-del-hogar','suplementos-vitaminicos'];
+            if (specialSlugs.has(currentCategory)) {
+                const pool = allProducts.filter(p => allowed.includes(p.categoria));
+                let selection = [];
+                try { selection = JSON.parse(localStorage.getItem('promoSelection') || '[]'); } catch(e){ selection = []; }
+                const validIds = new Set(pool.map(p => p.id));
+                if (!Array.isArray(selection) || selection.length < 3 || !selection.every(id => validIds.has(id))) {
+                    const arr = pool.slice();
+                    for (let i = arr.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [arr[i], arr[j]] = [arr[j], arr[i]];
+                    }
+                    selection = arr.slice(0, Math.min(9, arr.length)).map(p => p.id);
+                    try { localStorage.setItem('promoSelection', JSON.stringify(selection)); } catch(e){}
+                }
+                const bucketMap = {'ofertas-de-temporada':0, 'mas-vendidos':1, 'lo-que-necesitas':2};
+                const bucket = bucketMap[currentCategory] ?? 0;
+                const pickedIds = selection.filter((_, idx) => idx % 3 === bucket).slice(0,3);
+                const pickedSet = new Set(pickedIds);
+                filteredProducts = allProducts.filter(p => pickedSet.has(p.id));
+            } else if (currentCategory !== 'todos') {
                 filteredProducts = allProducts.filter(product => product.categoria === currentCategory);
+            } else {
+                filteredProducts = allProducts;
             }
-
             // Generar HTML de productos
             if (filteredProducts.length === 0) {
                 productsGrid.innerHTML = `<p class="no-products" data-i18n="category.noProducts">No se encontraron productos para esta categoría.</p>`;
