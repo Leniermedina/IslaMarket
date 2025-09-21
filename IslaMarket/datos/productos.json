@@ -179,7 +179,7 @@
     {
       "id": 23,
       "nombre": "Envíos marítimos",
-      "precio": 25.0,
+      "precio": 0.0,
       "categoria": "servicios",
       "imagen": "assets/img/services/placeholder.jpg",
       "stock": 9999
@@ -187,7 +187,7 @@
     {
       "id": 24,
       "nombre": "Envíos aéreos",
-      "precio": 20.99,
+      "precio": 0.0,
       "categoria": "servicios",
       "imagen": "assets/img/services/placeholder.jpg",
       "stock": 9999
@@ -195,7 +195,7 @@
     {
       "id": 25,
       "nombre": "Recargas internacionales",
-      "precio": 30.0,
+      "precio": 0.0,
       "categoria": "servicios",
       "imagen": "assets/img/services/placeholder.jpg",
       "stock": 9999
@@ -203,7 +203,7 @@
     {
       "id": 26,
       "nombre": "Servicio de paqueterías y combos",
-      "precio": 47.0,
+      "precio": 0.0,
       "categoria": "servicios",
       "imagen": "assets/img/services/placeholder.jpg",
       "stock": 9999
@@ -211,7 +211,7 @@
     {
       "id": 27,
       "nombre": "Envíos terrestres",
-      "precio": 58.0,
+      "precio": 0.0,
       "categoria": "servicios",
       "imagen": "assets/img/services/placeholder.jpg",
       "stock": 9999

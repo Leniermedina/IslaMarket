@@ -695,12 +695,7 @@
                 display: none;
             }
         }
-    
-/* Bigger cart quantity box for 5+ digits */
-.cart-item .quantity-display,
-.cart-item input.quantity-input { width: 110px; height: 44px; font-size: 1.15rem; }
-
-</style>
+    </style>
 </head>
 <body>
     <div class="overlay" id="overlay"></div>
@@ -901,7 +896,7 @@
                         <div class="cart-item-price">${item.precio} US$</div>
                         <div class="cart-item-quantity">
                             <button class="quantity-minus" data-id="${item.id}">-</button>
-                            <input type="number" value="${item.cantidad}" min="1" max="99999" class="quantity-input" data-id="${item.id}">
+                            <input type="number" value="${item.cantidad}" min="1" class="quantity-input" data-id="${item.id}">
                             <button class="quantity-plus" data-id="${item.id}">+</button>
                         </div>
                         <button class="remove-item" data-id="${item.id}" data-i18n="cart.removeItem">Eliminar</button>
@@ -1031,26 +1026,22 @@
             // Filtrar productos por categoría
             let filteredProducts;
             const specialSlugs = new Set(['ofertas-de-temporada','mas-vendidos','lo-que-necesitas']);
-            const allowed = ['accesorios-deportivos','alimentos','ropa','electrodomesticos','tecnologia','herramientas','joyeria','piezas-para-autos','productos-del-hogar','suplementos-vitaminicos'];
             if (specialSlugs.has(currentCategory)) {
-                const pool = allProducts.filter(p => allowed.includes(p.categoria));
-                let selection = [];
-                try { selection = JSON.parse(localStorage.getItem('promoSelection') || '[]'); } catch(e){ selection = []; }
-                const validIds = new Set(pool.map(p => p.id));
-                if (!Array.isArray(selection) || selection.length < 3 || !selection.every(id => validIds.has(id))) {
-                    const arr = pool.slice();
-                    for (let i = arr.length - 1; i > 0; i--) {
-                        const j = Math.floor(Math.random() * (i + 1));
-                        [arr[i], arr[j]] = [arr[j], arr[i]];
-                    }
-                    selection = arr.slice(0, Math.min(9, arr.length)).map(p => p.id);
-                    try { localStorage.setItem('promoSelection', JSON.stringify(selection)); } catch(e){}
+                const pool = allProducts.slice(); // include ALL products
+                // Shuffle on each page load
+                for (let i = pool.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [pool[i], pool[j]] = [pool[j], pool[i]];
                 }
-                const bucketMap = {'ofertas-de-temporada':0, 'mas-vendidos':1, 'lo-que-necesitas':2};
+                // Equal split into 3 buckets
+                const bucketMap = { 'ofertas-de-temporada': 0, 'mas-vendidos': 1, 'lo-que-necesitas': 2 };
                 const bucket = bucketMap[currentCategory] ?? 0;
-                const pickedIds = selection.filter((_, idx) => idx % 3 === bucket).slice(0,3);
-                const pickedSet = new Set(pickedIds);
-                filteredProducts = allProducts.filter(p => pickedSet.has(p.id));
+                const n = pool.length;
+                const baseShare = Math.floor(n / 3);
+                const extra = n % 3;
+                const start = bucket * baseShare + Math.min(bucket, extra);
+                const count = baseShare + (bucket < extra ? 1 : 0);
+                filteredProducts = pool.slice(start, start + count);
             } else if (currentCategory !== 'todos') {
                 filteredProducts = allProducts.filter(product => product.categoria === currentCategory);
             } else {
