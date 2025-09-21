@@ -952,7 +952,7 @@
 .cart-item .quantity-controls { display:flex; align-items:center; gap:.5rem; }
 .cart-item .quantity-btn { width: 40px; height: 40px; font-size: 1.1rem; border-radius:8px; }
 .cart-item .quantity-display,
-.cart-item input.quantity-input { width:56px; height:40px; text-align:center; font-weight:600; font-size:1.05rem; border-radius:8px; }
+.cart-item input.quantity-input { width:72px; height:40px; text-align:center; font-weight:600; font-size:1.05rem; border-radius:8px; }
 
 </style>
 
@@ -1266,9 +1266,6 @@
                 <h2><a href="categoria.html?cat=servicios" style="text-decoration:none;color:inherit;">Servicios y envíos</a></h2>
 <div id="services-grid-home" class="services-grid"></div>
 
-                <div class="services-grid" id="servicesGrid">
-                    <!-- Servicios cargados dinámicamente -->
-                </div>
             </section>
         </div>
     </main>
@@ -1370,7 +1367,7 @@
                         <div class="cart-item-price">${item.precio} US$</div>
                         <div class="cart-item-quantity">
                             <button class="quantity-minus" data-id="${item.id}">-</button>
-                            <input type="number" value="${item.cantidad}" min="1" class="quantity-input" data-id="${item.id}">
+                            <input type="number" value="${item.cantidad}" min="1" max="9999" class="quantity-input" data-id="${item.id}">
                             <button class="quantity-plus" data-id="${item.id}">+</button>
                         </div>
                         <button class="remove-item" data-id="${item.id}" data-i18n="cart.removeItem">Eliminar</button>
@@ -1482,7 +1479,7 @@
                         <div class="quantity-selector">
                             <span data-i18n="cart.quantity">Cantidad:</span>
                             <button class="quantity-btn minus" data-product-id="${product.id}">-</button>
-                            <input type="number" value="0" min="0" max="99" class="quantity-input" data-product-id="${product.id}">
+                            <input type="number" value="1" min="1" max="9999" max="99" class="quantity-input" data-product-id="${product.id}">
                             <button class="quantity-btn plus" data-product-id="${product.id}">+</button>
                         </div>
                         <button class="add-to-cart-btn" data-product-id="${product.id}" data-product-name="${product.nombre}" data-product-price="${product.precio}" data-product-image="${product.imagen}" data-i18n="category.addToCart">
@@ -1509,7 +1506,7 @@
                         <div class="quantity-selector">
                             <span data-i18n="cart.quantity">Cantidad:</span>
                             <button class="quantity-btn minus" data-product-id="${product.id}">-</button>
-                            <input type="number" value="0" min="0" max="99" class="quantity-input" data-product-id="${product.id}">
+                            <input type="number" value="1" min="1" max="9999" max="99" class="quantity-input" data-product-id="${product.id}">
                             <button class="quantity-btn plus" data-product-id="${product.id}">+</button>
                         </div>
                         <button class="add-to-cart-btn" data-product-id="${product.id}" data-product-name="${product.nombre}" data-product-price="${product.precio}" data-product-image="${product.imagen}" data-i18n="category.addToCart">
@@ -1734,7 +1731,7 @@
             actualizarUIPorCarritoGlobal();
             
             loadProducts();
-            loadServices();
+            // loadServices(); // disabled per request
             // Aplicar traducciones a todo el contenido de la página
             applyTranslations(currentLanguage);
         });
@@ -1756,14 +1753,14 @@ document.addEventListener('DOMContentLoaded', () => {
             <h3 class="product-name" data-i18n="product.${(product.nombre || '').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-')}">${product.nombre}</h3>
             <div class="product-price"><span>${(product.precio || 0).toFixed(2)}</span> <span>US$</span></div>
             <div class="quantity-container">
-              <input type="number" class="quantity-input" value="0" min="0" data-id="${product.id}">
+              <input type="number" class="quantity-input" value="1" min="1" max="9999" data-id="${product.id}">
               <button class="add-to-cart-btn" data-product-id="${product.id}">
                 <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <circle cx="9" cy="21" r="1"></circle>
                   <circle cx="20" cy="21" r="1"></circle>
                   <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                 </svg>
-                <span data-i18n="product.add">Agregar</span>
+                <span data-i18n="category.addToCart">Agregar</span>
               </button>
             </div>
           </div>
