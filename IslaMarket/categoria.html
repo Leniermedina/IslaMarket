@@ -695,7 +695,12 @@
                 display: none;
             }
         }
-    </style>
+    
+/* Bigger cart quantity box for 5+ digits */
+.cart-item .quantity-display,
+.cart-item input.quantity-input { width: 110px; height: 44px; font-size: 1.15rem; }
+
+</style>
 </head>
 <body>
     <div class="overlay" id="overlay"></div>
@@ -896,7 +901,7 @@
                         <div class="cart-item-price">${item.precio} US$</div>
                         <div class="cart-item-quantity">
                             <button class="quantity-minus" data-id="${item.id}">-</button>
-                            <input type="number" value="${item.cantidad}" min="1" class="quantity-input" data-id="${item.id}">
+                            <input type="number" value="${item.cantidad}" min="1" max="99999" class="quantity-input" data-id="${item.id}">
                             <button class="quantity-plus" data-id="${item.id}">+</button>
                         </div>
                         <button class="remove-item" data-id="${item.id}" data-i18n="cart.removeItem">Eliminar</button>

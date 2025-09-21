@@ -2,7 +2,10 @@
 
 const translations = {
     es: {
-        "home.hero.btn3": "Explorar servicios",
+        "contact.form.title": "Envíanos un mensaje",
+        "home.hero.desc3": "Recibe tus compras en tiempo récord por aire, mar o tierra.",
+        "home.hero.title3": "Envíos rápidos",
+        "home.hero.btn3": "Explore services",
         "cart.totalLabel": "Total:",
         // === Navegación ===
         "nav.home": "Inicio",
@@ -172,6 +175,9 @@ const translations = {
         "product.envios-terrestres": "Envíos terrestres",
     },
     en: {
+        "contact.form.title": "Send us a message",
+        "home.hero.desc3": "Get your orders delivered fast by air, sea or ground.",
+        "home.hero.title3": "Fast shipping",
         "home.hero.btn3": "Explore services",
         "cart.totalLabel": "Total:",
         "category.lo-que-necesitas": "What you need",
