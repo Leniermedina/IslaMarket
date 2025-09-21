@@ -314,7 +314,7 @@ function applyTranslations(lang) {
     // Traducir elementos con data-i18n
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
-        const translation = getSafeTranslation(key, lang, element.textContent || element.placeholder || element.value);
+        const translation = getTranslation(key, lang);
         if (element.placeholder !== undefined) {
             element.placeholder = translation;
         } else if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA' || element.tagName === 'SELECT') {
