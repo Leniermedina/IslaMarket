@@ -125,7 +125,7 @@ const translations = {
         "cart.checkout": "Finalizar Compra",
         "cart.removeItem": "Eliminar",
         "cart.title": "Carrito de Compras",
-        "cart.close": "Cerrar"
+        "cart.close": "Cerrar",
         "category.todos": "Todos los productos",
         "category.accesorios-deportivos": "Accesorios Deportivos",
         "category.alimentos": "Alimentos",
