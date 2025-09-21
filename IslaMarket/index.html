@@ -947,15 +947,7 @@
                 grid-template-columns: 1fr;
             }
         }
-    
-/* ---- Cart quantity controls: larger and clearer ---- */
-.cart-item .quantity-controls { display:flex; align-items:center; gap:.5rem; }
-.cart-item .quantity-btn { width: 40px; height: 40px; font-size: 1.1rem; border-radius:8px; }
-.cart-item .quantity-display,
-.cart-item input.quantity-input { width:72px; height:40px; text-align:center; font-weight:600; font-size:1.05rem; border-radius:8px; }
-
-</style>
-
+    </style>
 </head>
 <body>
     <div class="overlay" id="overlay"></div>
@@ -1208,7 +1200,6 @@
                     <img src="assets/img/card1.svg" alt="Ofertas de temporada" loading="lazy">
                     <div class="promo-content">
                         <h3 data-i18n="home.deals">Ofertas de temporada</h3>
-
                         <a href="categoria.html?cat=ofertas-de-temporada">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="10" cy="20.5" r="1"></circle>
@@ -1222,7 +1213,6 @@
                     <img src="assets/img/card2.svg" alt="Productos populares" loading="lazy">
                     <div class="promo-content">
                         <h3 data-i18n="home.bestsellers">Más vendidos</h3>
-
                         <a href="categoria.html?cat=mas-vendidos">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="10" cy="20.5" r="1"></circle>
@@ -1236,7 +1226,6 @@
                     <img src="assets/img/card3.svg" alt="Lo que necesitas" loading="lazy">
                     <div class="promo-content">
                         <h3 data-i18n="home.need">Lo que necesitas</h3>
-
                         <a href="categorias.html"> <!-- Corregido: Enlace a la página general de categorías -->
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="10" cy="20.5" r="1"></circle>
@@ -1479,7 +1468,7 @@
                         <div class="quantity-selector">
                             <span data-i18n="cart.quantity">Cantidad:</span>
                             <button class="quantity-btn minus" data-product-id="${product.id}">-</button>
-                            <input type="number" value="1" min="1" max="9999" max="99" class="quantity-input" data-product-id="${product.id}">
+                            <input type="number" value="0" min="0" max="99" class="quantity-input" data-product-id="${product.id}">
                             <button class="quantity-btn plus" data-product-id="${product.id}">+</button>
                         </div>
                         <button class="add-to-cart-btn" data-product-id="${product.id}" data-product-name="${product.nombre}" data-product-price="${product.precio}" data-product-image="${product.imagen}" data-i18n="category.addToCart">
@@ -1506,7 +1495,7 @@
                         <div class="quantity-selector">
                             <span data-i18n="cart.quantity">Cantidad:</span>
                             <button class="quantity-btn minus" data-product-id="${product.id}">-</button>
-                            <input type="number" value="1" min="1" max="9999" max="99" class="quantity-input" data-product-id="${product.id}">
+                            <input type="number" value="0" min="0" max="99" class="quantity-input" data-product-id="${product.id}">
                             <button class="quantity-btn plus" data-product-id="${product.id}">+</button>
                         </div>
                         <button class="add-to-cart-btn" data-product-id="${product.id}" data-product-name="${product.nombre}" data-product-price="${product.precio}" data-product-image="${product.imagen}" data-i18n="category.addToCart">
@@ -1731,7 +1720,7 @@
             actualizarUIPorCarritoGlobal();
             
             loadProducts();
-            // loadServices(); // disabled per request
+            loadServices();
             // Aplicar traducciones a todo el contenido de la página
             applyTranslations(currentLanguage);
         });
@@ -1753,7 +1742,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <h3 class="product-name" data-i18n="product.${(product.nombre || '').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-')}">${product.nombre}</h3>
             <div class="product-price"><span>${(product.precio || 0).toFixed(2)}</span> <span>US$</span></div>
             <div class="quantity-container">
-              <input type="number" class="quantity-input" value="1" min="1" max="9999" data-id="${product.id}">
+              <input type="number" class="quantity-input" value="0" min="0" max="9999" data-id="${product.id}">
               <button class="add-to-cart-btn" data-product-id="${product.id}">
                 <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <circle cx="9" cy="21" r="1"></circle>
@@ -1766,17 +1755,16 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
       `).join('');
+      // Bind add-to-cart
       document.querySelectorAll('#services-grid-home .add-to-cart-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
-          const productId = parseInt(e.currentTarget.getAttribute('data-product-id'));
-          const card = e.currentTarget.closest('.product-card');
-          const qty = parseInt(card.querySelector('.quantity-input').value);
+          const id = parseInt(btn.getAttribute('data-product-id'));
+          const card = btn.closest('.product-card');
+          const qty = parseInt(card.querySelector('.quantity-input').value) || 0;
           if (qty > 0) {
-            const prod = servicios.find(p => p.id === productId);
+            const prod = servicios.find(p => p.id === id);
             if (prod) carritoGlobal.agregarProducto(prod.id, qty, { nombre: prod.nombre, precio: prod.precio, imagen: prod.imagen });
             card.querySelector('.quantity-input').value = 0;
-          } else {
-            alert('Ingrese una cantidad válida');
           }
         });
       });

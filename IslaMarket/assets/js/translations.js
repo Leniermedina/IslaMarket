@@ -2,8 +2,7 @@
 
 const translations = {
     es: {
-        "home.hero.desc3": "Recibe tus compras en tiempo récord por aire, mar o tierra.",
-        "home.hero.title3": "Envíos rápidos",
+        "home.hero.btn3": "Explorar servicios",
         "cart.totalLabel": "Total:",
         // === Navegación ===
         "nav.home": "Inicio",
@@ -26,7 +25,7 @@ const translations = {
         "home.deals.section": "Ofertas de la semana",
         "home.bestsellers.section": "Más vendidos",
         "home.services": "Servicios y envíos",
-        "category.addToCart": "Agregar",
+        "category.addToCart": "Add",
         "cart.quantity": "Cantidad:",
 
         // === Nombres de Categorías en la Página de Inicio ===
@@ -173,8 +172,7 @@ const translations = {
         "product.envios-terrestres": "Envíos terrestres",
     },
     en: {
-        "home.hero.desc3": "Get your orders delivered fast by air, sea or ground.",
-        "home.hero.title3": "Fast shipping",
+        "home.hero.btn3": "Explore services",
         "cart.totalLabel": "Total:",
         "category.lo-que-necesitas": "What you need",
         "category.mas-vendidos": "Bestsellers",
