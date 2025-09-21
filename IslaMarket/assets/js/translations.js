@@ -2,6 +2,8 @@
 
 const translations = {
     es: {
+        "home.hero.desc3": "Recibe tus compras en tiempo récord por aire, mar o tierra.",
+        "home.hero.title3": "Envíos rápidos",
         "cart.totalLabel": "Total:",
         // === Navegación ===
         "nav.home": "Inicio",
@@ -171,6 +173,8 @@ const translations = {
         "product.envios-terrestres": "Envíos terrestres",
     },
     en: {
+        "home.hero.desc3": "Get your orders delivered fast by air, sea or ground.",
+        "home.hero.title3": "Fast shipping",
         "cart.totalLabel": "Total:",
         "category.lo-que-necesitas": "What you need",
         "category.mas-vendidos": "Bestsellers",

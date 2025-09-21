@@ -947,7 +947,15 @@
                 grid-template-columns: 1fr;
             }
         }
-    </style>
+    
+/* ---- Cart quantity controls: larger and clearer ---- */
+.cart-item .quantity-controls { display:flex; align-items:center; gap:.5rem; }
+.cart-item .quantity-btn { width: 40px; height: 40px; font-size: 1.1rem; border-radius:8px; }
+.cart-item .quantity-display,
+.cart-item input.quantity-input { width:56px; height:40px; text-align:center; font-weight:600; font-size:1.05rem; border-radius:8px; }
+
+</style>
+
 </head>
 <body>
     <div class="overlay" id="overlay"></div>
@@ -1200,6 +1208,7 @@
                     <img src="assets/img/card1.svg" alt="Ofertas de temporada" loading="lazy">
                     <div class="promo-content">
                         <h3 data-i18n="home.deals">Ofertas de temporada</h3>
+
                         <a href="categoria.html?cat=ofertas-de-temporada">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="10" cy="20.5" r="1"></circle>
@@ -1213,6 +1222,7 @@
                     <img src="assets/img/card2.svg" alt="Productos populares" loading="lazy">
                     <div class="promo-content">
                         <h3 data-i18n="home.bestsellers">Más vendidos</h3>
+
                         <a href="categoria.html?cat=mas-vendidos">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="10" cy="20.5" r="1"></circle>
@@ -1226,6 +1236,7 @@
                     <img src="assets/img/card3.svg" alt="Lo que necesitas" loading="lazy">
                     <div class="promo-content">
                         <h3 data-i18n="home.need">Lo que necesitas</h3>
+
                         <a href="categorias.html"> <!-- Corregido: Enlace a la página general de categorías -->
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="10" cy="20.5" r="1"></circle>
@@ -1252,7 +1263,9 @@
             </section>
             <!-- Servicios y envíos -->
             <section class="services-section">
-                <h2 data-i18n="home.services">Servicios y envíos</h2>
+                <h2><a href="categoria.html?cat=servicios" style="text-decoration:none;color:inherit;">Servicios y envíos</a></h2>
+<div id="services-grid-home" class="services-grid"></div>
+
                 <div class="services-grid" id="servicesGrid">
                     <!-- Servicios cargados dinámicamente -->
                 </div>
@@ -1726,5 +1739,56 @@
             applyTranslations(currentLanguage);
         });
     </script>
+
+<!-- Servicios loader script -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const grid = document.getElementById('services-grid-home');
+  if (!grid) return;
+  fetch('datos/productos.json')
+    .then(r => r.json())
+    .then(data => {
+      const servicios = (data.productos || []).filter(p => p.categoria === 'servicios');
+      grid.innerHTML = servicios.map(product => `
+        <div class="product-card">
+          <div class="product-image"><img src="${product.imagen}" alt="${product.nombre}" loading="lazy"></div>
+          <div class="product-info">
+            <h3 class="product-name" data-i18n="product.${(product.nombre || '').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-')}">${product.nombre}</h3>
+            <div class="product-price"><span>${(product.precio || 0).toFixed(2)}</span> <span>US$</span></div>
+            <div class="quantity-container">
+              <input type="number" class="quantity-input" value="0" min="0" data-id="${product.id}">
+              <button class="add-to-cart-btn" data-product-id="${product.id}">
+                <svg class="cart-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <span data-i18n="product.add">Agregar</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+      document.querySelectorAll('#services-grid-home .add-to-cart-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const productId = parseInt(e.currentTarget.getAttribute('data-product-id'));
+          const card = e.currentTarget.closest('.product-card');
+          const qty = parseInt(card.querySelector('.quantity-input').value);
+          if (qty > 0) {
+            const prod = servicios.find(p => p.id === productId);
+            if (prod) carritoGlobal.agregarProducto(prod.id, qty, { nombre: prod.nombre, precio: prod.precio, imagen: prod.imagen });
+            card.querySelector('.quantity-input').value = 0;
+          } else {
+            alert('Ingrese una cantidad válida');
+          }
+        });
+      });
+      if (typeof applyTranslations === 'function') {
+        try { applyTranslations(localStorage.getItem('language') || 'es'); } catch(e){}
+      }
+    });
+});
+</script>
+
 </body>
 </html>
