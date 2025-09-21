@@ -343,13 +343,10 @@ const translations = {
 
 // Función para obtener la traducción
 function getTranslation(key, lang = 'es') {
-    return translations[lang] && translations[lang][key] ? translations[lang][key] : key;
-
-// Fallback para no mostrar claves cuando no hay traducción
-function getSafeTranslation(key, lang, fallbackText) {
-    const t = getTranslation(key, lang);
-    // Si no existe traducción (t === key), devolvemos el texto original
-    return (t && t !== key) ? t : (fallbackText !== undefined ? fallbackText : '');
+    // Normaliza locale: 'en-US' -> 'en'
+    const base = (lang || 'es').toLowerCase().split('-')[0];
+    const dict = translations[lang] || translations[base] || translations['es'] || {};
+    return dict[key] ? dict[key] : key;
 }
 }
 
