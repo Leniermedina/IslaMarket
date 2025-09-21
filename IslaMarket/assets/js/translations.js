@@ -2,6 +2,7 @@
 
 const translations = {
     es: {
+        "cart.totalLabel": "Total:",
         // === Navegación ===
         "nav.home": "Inicio",
         "nav.shop": "Tienda",
@@ -170,6 +171,7 @@ const translations = {
         "product.envios-terrestres": "Envíos terrestres",
     },
     en: {
+        "cart.totalLabel": "Total:",
         "category.lo-que-necesitas": "What you need",
         "category.mas-vendidos": "Bestsellers",
         "category.ofertas-de-temporada": "Seasonal Deals",
