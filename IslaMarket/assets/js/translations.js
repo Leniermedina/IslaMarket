@@ -170,7 +170,10 @@ const translations = {
         "product.recargas-internacionales": "Recargas internacionales",
         "product.servicio-de-paqueterias-y-combos": "Servicio de paqueterías y combos",
         "product.envios-terrestres": "Envíos terrestres",
-    },
+        "home.hero.title3": "Servicios y envíos",
+    "home.hero.desc3": "Conoce nuestros servicios y opciones de envío rápidos y confiables.",
+    "contact.form.title": "Escríbenos",
+},
     en: {
         "home.hero.btn3": "Explore services",
         "cart.totalLabel": "Total:",
@@ -340,7 +343,10 @@ const translations = {
         "cart.removeItem": "Remove",
         "cart.title": "Shopping Cart",
         "cart.close": "Close"
-    }
+        "home.hero.title3": "Services & Shipping",
+    "home.hero.desc3": "Discover our services and fast, reliable shipping options.",
+    "contact.form.title": "Contact Us",
+}
 };
 
 // Función para obtener la traducción
@@ -409,3 +415,17 @@ function applyTranslations(lang) {
 window.translations = translations;
 window.getTranslation = getTranslation;
 window.applyTranslations = applyTranslations;
+
+
+// --- AUTO-INIT I18N (ensures translation applies on every page) ---
+document.addEventListener('DOMContentLoaded', function() {
+    try {
+        const lang = (window.localStorage && localStorage.getItem('language')) || 'es';
+        if (typeof applyTranslations === 'function') {
+            applyTranslations(lang);
+        }
+    } catch (e) {
+        console.error('i18n init error:', e);
+    }
+});
+// --- END AUTO-INIT I18N ---
