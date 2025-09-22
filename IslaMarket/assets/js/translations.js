@@ -2,6 +2,8 @@
 
 const translations = {
     es: {
+        "contact.form.title": "Escríbenos",
+
         "home.hero.btn3": "Explorar servicios",
         "cart.totalLabel": "Total:",
         // === Navegación ===
@@ -11,6 +13,8 @@ const translations = {
         "nav.contact": "Contacto",
 
         // === Página de Inicio (index.html) ===
+        "home.hero.desc3": "Entrega rápida y segura a tu puerta (24–72 h)",
+        "home.hero.title3": "Envíos rápidos",
         "home.categories": "Categorías",
         "home.deals": "Ofertas de temporada",
         "home.bestsellers": "Más vendidos",
@@ -172,6 +176,12 @@ const translations = {
         "product.envios-terrestres": "Envíos terrestres",
     },
     en: {
+        "contact.form.title": "Contact Us",
+
+        "home.hero.desc3": "Fast, reliable delivery to your door (24–72 h)",
+
+        "home.hero.title3": "Fast Shipping",
+
         "home.hero.btn3": "Explore services",
         "cart.totalLabel": "Total:",
         "category.lo-que-necesitas": "What you need",
