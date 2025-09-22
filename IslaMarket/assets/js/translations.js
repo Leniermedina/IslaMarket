@@ -415,17 +415,3 @@ function applyTranslations(lang) {
 window.translations = translations;
 window.getTranslation = getTranslation;
 window.applyTranslations = applyTranslations;
-
-
-// --- AUTO-INIT I18N (ensures translation applies on every page) ---
-document.addEventListener('DOMContentLoaded', function() {
-    try {
-        const lang = (window.localStorage && localStorage.getItem('language')) || 'es';
-        if (typeof applyTranslations === 'function') {
-            applyTranslations(lang);
-        }
-    } catch (e) {
-        console.error('i18n init error:', e);
-    }
-});
-// --- END AUTO-INIT I18N ---
