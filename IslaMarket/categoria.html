@@ -863,7 +863,23 @@
         const mainNav = document.getElementById('mainNav');
 
         // === FUNCIONES DEL CARRITO GLOBAL ===
-        function actualizarUIPorCarritoGlobal() {
+        
+// Auto-ajuste del ancho de inputs de cantidad dentro del carrito (según dígitos)
+function autoSizeCartQuantityInputs() {
+    const inputs = document.querySelectorAll('.cart-items .cart-item-quantity input[type="number"]');
+    inputs.forEach(inp => {
+        const digits = String(inp.value ?? '').trim().length || 1;
+        const ch = Math.min(16, Math.max(6, digits + 2)); // min 6ch, max 16ch
+        inp.style.width = ch + 'ch';
+        inp.style.minWidth = '6ch';
+        inp.style.maxWidth = '16ch';
+        inp.style.boxSizing = 'content-box';
+        // ensure visible in dark themes
+        inp.style.background = 'var(--background-color)';
+        inp.style.borderColor = 'var(--border-color)';
+    });
+}
+function actualizarUIPorCarritoGlobal() {
             const items = carritoGlobal.obtenerItems();
             const totalCantidad = carritoGlobal.obtenerCantidadTotal();
             
@@ -908,6 +924,8 @@
 
             cartTotalElement.textContent = carritoGlobal.calcularTotal();
 
+            autoSizeCartQuantityInputs();
+
             // Agregar eventos a los nuevos elementos del carrito
             document.querySelectorAll('.quantity-minus').forEach(button => {
                 button.addEventListener('click', (e) => {
@@ -935,8 +953,10 @@
                     const newQuantity = parseInt(e.target.value);
                     if (newQuantity > 0) {
                         carritoGlobal.actualizarCantidad(id, newQuantity);
+                    autoSizeCartQuantityInputs();
                     } else {
                         carritoGlobal.eliminarProducto(id);
+                    autoSizeCartQuantityInputs();
                     }
                 });
             });
@@ -945,6 +965,7 @@
                 button.addEventListener('click', (e) => {
                     const id = parseInt(e.target.getAttribute('data-id'));
                     carritoGlobal.eliminarProducto(id);
+                    autoSizeCartQuantityInputs();
                 });
             });
 
