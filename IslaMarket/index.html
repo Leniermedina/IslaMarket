@@ -948,6 +948,9 @@
             }
         }
     </style>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <link href="assets/logo/islm-logo.css" rel="stylesheet">
 </head>
 <body>
     <div class="overlay" id="overlay"></div>
@@ -970,9 +973,7 @@
     </aside>
     <header class="header">
         <div class="header-top">
-            <a href="index.html" class="logo">
-                <img src="assets/logo.svg" alt="IslaMarket" width="160" height="40">
-            </a>
+            <a href="index.html" class="logo" data-islm-logo data-size="28"></a>
             <div class="header-actions">
                 <!-- Botón de menú hamburguesa -->
                 <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
@@ -1775,5 +1776,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+  <script src="assets/logo/islm-logo.js" defer></script>
 </body>
 </html>

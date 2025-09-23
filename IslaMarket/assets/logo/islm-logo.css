@@ -1,0 +1,52 @@
+:root{
+  --islm-azul:#3c6fff;           /* Igual al azul de tus botones */
+  --delay-step:.12s;             /* separación entre letras */
+  --dur:1.2s;                    /* duración brillo por letra */
+  --glow:0 0 6px var(--islm-azul), 0 0 14px var(--islm-azul);
+}
+.islm-logo{
+  display:flex;gap:.02em;align-items:center;
+  font:700 28px/1 'Montserrat',system-ui,sans-serif;
+  user-select:none;cursor:pointer;
+  animation: islm-pop 2.6s ease-in-out infinite;
+}
+.islm-logo[data-size="24"]{font-size:24px}
+.islm-logo[data-size="28"]{font-size:28px}
+.islm-logo[data-size="32"]{font-size:32px}
+@media (max-width:480px){ .islm-logo{font-size:22px} }
+
+.islm-logo span{
+  color:var(--islm-azul);
+  opacity:.28; transform:translateY(0);
+  animation: islm-sweep var(--dur) ease-in-out infinite;
+  animation-delay: calc(var(--i) * var(--delay-step) * -1); /* arranca ya */
+  will-change: opacity, text-shadow, transform;
+}
+@keyframes islm-sweep{
+  0%   {opacity:.28; text-shadow:none; transform:translateY(0)}
+  10%  {opacity:1;   text-shadow:var(--glow); transform:translateY(-1px)}
+  22%  {opacity:.85; text-shadow:var(--glow)}
+  100% {opacity:.28; text-shadow:none; transform:translateY(0)}
+}
+@keyframes islm-pop{ 0%,100%{transform:scale(1)} 50%{transform:scale(1.02)} }
+
+/* Modo claro automático */
+@media (prefers-color-scheme: light){
+  .islm-logo span{opacity:.4}
+}
+
+/* Respeta reduced-motion (si quieres forzarlo, elimina este bloque) */
+
+  .islm-logo span{opacity:1}
+}
+
+/* Quitar subrayado cuando el logo está dentro de un <a> */
+a[data-islm-logo],
+a[data-islm-logo]:hover,
+a[data-islm-logo]:focus,
+a[data-islm-logo]:active{
+  text-decoration: none !important;
+  -webkit-text-decoration: none !important;
+}
+/* Asegurar que el bloque del logo nunca herede decoraciones */
+.islm-logo{ text-decoration: none !important; }
