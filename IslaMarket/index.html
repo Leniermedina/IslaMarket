@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IslaMarket • Tu tienda online</title>
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
     <style>
         :root {
             --primary-color: #4a6cfa;
@@ -950,7 +950,7 @@
     </style>
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
-  <link href="assets/logo/islm-logo.css" rel="stylesheet">
+  <link href="/assets/logo/islm-logo.css" rel="stylesheet">
 </head>
 <body>
     <div class="overlay" id="overlay"></div>
@@ -1163,7 +1163,7 @@
             <section class="hero">
                 <div class="hero-slides">
                     <div class="slide active">
-                        <img src="assets/img/hero1.svg" alt="Ofertas especiales" loading="lazy">
+                        <img src="/assets/img/hero1.svg" alt="Ofertas especiales" loading="lazy">
                         <div class="slide-content">
                             <h2 data-i18n="home.hero.title1">Grandes Ofertas</h2>
                             <p data-i18n="home.hero.desc1">Hasta 50% de descuento en productos seleccionados</p>
@@ -1171,7 +1171,7 @@
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="assets/img/hero2.svg" alt="Nuevos productos" loading="lazy">
+                        <img src="/assets/img/hero2.svg" alt="Nuevos productos" loading="lazy">
                         <div class="slide-content">
                             <h2 data-i18n="home.hero.title2">Nuevos Productos</h2>
                             <p data-i18n="home.hero.desc2">Descubre las últimas novedades en IslaMarket</p>
@@ -1179,7 +1179,7 @@
                         </div>
                     </div>
                     <div class="slide">
-                        <img src="assets/img/hero3.svg" alt="Envíos rápidos" loading="lazy">
+                        <img src="/assets/img/hero3.svg" alt="Envíos rápidos" loading="lazy">
                         <div class="slide-content">
                             <h2 data-i18n="home.hero.title3">Envíos rápidos</h2>
                             <p data-i18n="home.hero.desc3">Entrega rápida y segura a tu puerta (24–72 h)</p>
@@ -1198,7 +1198,7 @@
             <!-- Tarjetas promocionales -->
             <section class="promo-cards">
                 <div class="promo-card">
-                    <img src="assets/img/card1.svg" alt="Ofertas de temporada" loading="lazy">
+                    <img src="/assets/img/card1.svg" alt="Ofertas de temporada" loading="lazy">
                     <div class="promo-content">
                         <h3 data-i18n="home.deals">Ofertas de temporada</h3>
                         <a href="categoria.html?cat=ofertas-de-temporada">
@@ -1211,7 +1211,7 @@
                     </div>
                 </div>
                 <div class="promo-card">
-                    <img src="assets/img/card2.svg" alt="Productos populares" loading="lazy">
+                    <img src="/assets/img/card2.svg" alt="Productos populares" loading="lazy">
                     <div class="promo-content">
                         <h3 data-i18n="home.bestsellers">Más vendidos</h3>
                         <a href="categoria.html?cat=mas-vendidos">
@@ -1224,7 +1224,7 @@
                     </div>
                 </div>
                 <div class="promo-card">
-                    <img src="assets/img/card3.svg" alt="Lo que necesitas" loading="lazy">
+                    <img src="/assets/img/card3.svg" alt="Lo que necesitas" loading="lazy">
                     <div class="promo-content">
                         <h3 data-i18n="home.need">Lo que necesitas</h3>
                         <a href="categorias.html"> <!-- Corregido: Enlace a la página general de categorías -->
@@ -1262,7 +1262,7 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
-                <img src="assets/logo.svg" alt="IslaMarket" width="140" height="35">
+                <img src="/assets/logo.svg" alt="IslaMarket" width="140" height="35">
                 <p data-i18n="footer.description">Tu tienda online confiable con los mejores productos y precios.</p>
             </div>
             <div class="footer-section">
@@ -1293,9 +1293,9 @@
         </a>
     </div>
     <!-- Incluir el archivo de traducciones -->
-    <script src="assets/js/translations.js"></script>
+    <script src="/assets/js/translations.js"></script>
     <!-- Incluir el carrito externo -->
-    <script src="assets/js/carrito.js"></script>
+    <script src="/assets/js/carrito.js"></script>
     <script>
         // Variables globales
         let allProducts = [];
@@ -1459,11 +1459,11 @@ function actualizarUIPorCarritoGlobal() {
                 console.error('Error cargando productos:', error);
                 // Para demostración, usar datos de ejemplo si el JSON falla
                 allProducts = [
-                    { id: 1, nombre: "Producto Ejemplo 1", precio: 19.99, imagen: "assets/img/product1.jpg", categoria: "ofertas-semana" },
-                    { id: 2, nombre: "Producto Ejemplo 2", precio: 29.99, imagen: "assets/img/product2.jpg", categoria: "mas-vendidos" },
-                    { id: 3, nombre: "Producto Ejemplo 3", precio: 39.99, imagen: "assets/img/product3.jpg", categoria: "ofertas-semana" },
-                    { id: 4, nombre: "Producto Ejemplo 4", precio: 49.99, imagen: "assets/img/product4.jpg", categoria: "mas-vendidos" },
-                    { id: 5, nombre: "Producto Ejemplo 5", precio: 59.99, imagen: "assets/img/product5.jpg", categoria: "ofertas-semana" }
+                    { id: 1, nombre: "Producto Ejemplo 1", precio: 19.99, imagen: "/assets/img/product1.jpg", categoria: "ofertas-semana" },
+                    { id: 2, nombre: "Producto Ejemplo 2", precio: 29.99, imagen: "/assets/img/product2.jpg", categoria: "mas-vendidos" },
+                    { id: 3, nombre: "Producto Ejemplo 3", precio: 39.99, imagen: "/assets/img/product3.jpg", categoria: "ofertas-semana" },
+                    { id: 4, nombre: "Producto Ejemplo 4", precio: 49.99, imagen: "/assets/img/product4.jpg", categoria: "mas-vendidos" },
+                    { id: 5, nombre: "Producto Ejemplo 5", precio: 59.99, imagen: "/assets/img/product5.jpg", categoria: "ofertas-semana" }
                 ];
                 displayDealsAndBestsellers();
             }
@@ -1592,8 +1592,8 @@ function actualizarUIPorCarritoGlobal() {
                 console.error('Error cargando servicios:', error);
                 // Datos de ejemplo para servicios
                 services = [
-                    { id: 101, nombre: "Servicio de Entrega", descripcion: "Entrega rápida a domicilio", imagen: "assets/img/service1.jpg" },
-                    { id: 102, nombre: "Soporte Técnico", descripcion: "Asistencia técnica 24/7", imagen: "assets/img/service2.jpg" }
+                    { id: 101, nombre: "Servicio de Entrega", descripcion: "Entrega rápida a domicilio", imagen: "/assets/img/service1.jpg" },
+                    { id: 102, nombre: "Soporte Técnico", descripcion: "Asistencia técnica 24/7", imagen: "/assets/img/service2.jpg" }
                 ];
                 displayServices();
             }
@@ -1797,6 +1797,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
-  <script src="assets/logo/islm-logo.js" defer></script>
+  <script src="/assets/logo/islm-logo.js" defer></script>
 </body>
 </html>
