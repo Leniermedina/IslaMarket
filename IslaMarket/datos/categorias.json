@@ -4,91 +4,91 @@
       "id": "todos",
       "nombre": "Todos los productos",
       "slug": "todos",
-      "imagen": "/assets/img/categorias/todos-los-productos.jpg"
+      "imagen": "assets/img/categorias/todos-los-productos.jpg"
     },
     {
       "id": "accesorios-deportivos",
       "nombre": "Accesorios Deportivos",
       "slug": "accesorios-deportivos",
-      "imagen": "/assets/img/categorias/accesorios-deportivos.jpg"
+      "imagen": "assets/img/categorias/accesorios-deportivos.jpg"
     },
     {
       "id": "alimentos",
       "nombre": "Alimentos",
       "slug": "alimentos",
-      "imagen": "/assets/img/categorias/alimentos.jpg"
+      "imagen": "assets/img/categorias/alimentos.jpg"
     },
     {
       "id": "electrodomesticos",
       "nombre": "Electrodomésticos",
       "slug": "electrodomesticos",
-      "imagen": "/assets/img/categorias/electrodomesticos.jpg"
+      "imagen": "assets/img/categorias/electrodomesticos.jpg"
     },
     {
       "id": "ropa",
       "nombre": "Ropa",
       "slug": "ropa",
-      "imagen": "/assets/img/categorias/ropa.jpg"
+      "imagen": "assets/img/categorias/ropa.jpg"
     },
     {
       "id": "tecnologia",
       "nombre": "Tecnología",
       "slug": "tecnologia",
-      "imagen": "/assets/img/categorias/tecnologia.jpg"
+      "imagen": "assets/img/categorias/tecnologia.jpg"
     },
     {
       "id": "herramientas",
       "nombre": "Herramientas",
       "slug": "herramientas",
-      "imagen": "/assets/img/categorias/herramientas.jpg"
+      "imagen": "assets/img/categorias/herramientas.jpg"
     },
     {
       "id": "joyeria",
       "nombre": "Joyería",
       "slug": "joyeria",
-      "imagen": "/assets/img/categorias/joyeria.jpg"
+      "imagen": "assets/img/categorias/joyeria.jpg"
     },
     {
       "id": "piezas-para-autos",
       "nombre": "Piezas para Autos",
       "slug": "piezas-para-autos",
-      "imagen": "/assets/img/categorias/piezas-para-autos.jpg"
+      "imagen": "assets/img/categorias/piezas-para-autos.jpg"
     },
     {
       "id": "productos-del-hogar",
       "nombre": "Productos del Hogar",
       "slug": "productos-del-hogar",
-      "imagen": "/assets/img/categorias/productos-del-hogar.jpg"
+      "imagen": "assets/img/categorias/productos-del-hogar.jpg"
     },
     {
       "id": "suplementos-vitaminicos",
       "nombre": "Suplementos Vitamínicos",
       "slug": "suplementos-vitaminicos",
-      "imagen": "/assets/img/categorias/suplementos-vitaminicos.jpg"
+      "imagen": "assets/img/categorias/suplementos-vitaminicos.jpg"
     },
     {
       "id": "servicios",
       "nombre": "Servicios",
       "slug": "servicios",
-      "imagen": "/assets/img/categorias/servicios.jpg"
+      "imagen": "assets/img/categorias/servicios.jpg"
     },
     {
       "id": "ofertas-de-temporada",
       "nombre": "Ofertas de temporada",
       "slug": "ofertas-de-temporada",
-      "imagen": "/assets/img/categorias/ofertas-de-temporada.jpg"
+      "imagen": "assets/img/categorias/ofertas-de-temporada.jpg"
     },
     {
       "id": "mas-vendidos",
       "nombre": "Más vendidos",
       "slug": "mas-vendidos",
-      "imagen": "/assets/img/categorias/mas-vendidos.jpg"
+      "imagen": "assets/img/categorias/mas-vendidos.jpg"
     },
     {
       "id": "lo-que-necesitas",
       "nombre": "Lo que necesitas",
       "slug": "lo-que-necesitas",
-      "imagen": "/assets/img/categorias/lo-que-necesitas.jpg"
+      "imagen": "assets/img/categorias/lo-que-necesitas.jpg"
     }
   ]
 }
